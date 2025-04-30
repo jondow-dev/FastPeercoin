@@ -1059,7 +1059,7 @@ boost::filesystem::path GetDefaultDataDir()
     // Unix: ~/.peercoin
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "Peercoin";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "Fastpeercoin";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -1071,10 +1071,10 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     fs::create_directory(pathRet);
-    return pathRet / "Peercoin";
+    return pathRet / "Fastpeercoin";
 #else
     // Unix
-    return pathRet / ".peercoin";
+    return pathRet / ".fastpeercoin";
 #endif
 #endif
 }
