@@ -1053,6 +1053,14 @@ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\Peercoin
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\Peercoin
+    // Mac: ~/Library/Application Support/Peercoin
+    // Unix: ~/.peercoin
+#ifdef WIN32
+    // Windows
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "FastPeercoin";
+#else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
     if (pszHome == NULL || strlen(pszHome) == 0)
@@ -1061,6 +1069,7 @@ boost::filesystem::path GetDefaultDataDir()
         pathRet = fs::path(pszHome);
 
     return pathRet / ".fastpeercoin";
+#endif
 }
 
 boost::filesystem::path GetOldDefaultDataDir()
