@@ -6,15 +6,9 @@ $(package)_sha256_hash=e0a992d740709892e81f9d93f06daf305cf73fb81b545afe724780431
 $(package)_build_subdir=build_unix
 
 define $(package)_set_vars
-$(package)_config_opts=--disable-shared --enable-cxx --disable-replication --enable-option-checking
+$(package)_config_opts=--disable-shared --enable-cxx --disable-replication
 $(package)_config_opts_mingw32=--enable-mingw
 $(package)_config_opts_linux=--with-pic
-$(package)_config_opts_freebsd=--with-pic
-$(package)_config_opts_netbsd=--with-pic
-$(package)_config_opts_openbsd=--with-pic
-$(package)_config_opts_android=--with-pic
-$(package)_cflags+=-Wno-error=implicit-function-declaration -Wno-error=format-security -Wno-error=implicit-int
-$(package)_cppflags_mingw32=-DUNICODE -D_UNICODE
 endef
 
 define $(package)_preprocess_cmds
