@@ -26,6 +26,10 @@ distcleancheck:
 $(BITCOIN_QT_BIN):
 	make -C $(top_srcdir)/src/qt FastPeercoin-qt$(EXEEXT)
 
+if TARGET_WINDOWS
+deploy: $(BITCOIN_WIN_INSTALLER)
+endif
+
 if USE_LCOV
 
 baseline.info:

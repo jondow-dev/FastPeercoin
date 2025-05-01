@@ -189,6 +189,9 @@ qt_FastPeercoin_qt_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
   -I$(top_srcdir)/src/qt/forms
 qt_FastPeercoin_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 qt_FastPeercoin_qt_SOURCES = qt/bitcoin.cpp
+if TARGET_WINDOWS
+  qt_FastPeercoin_qt_SOURCES += $(PEERCOIN_RC)
+endif
 qt_FastPeercoin_qt_LDADD = qt/libpeercoinqt.a $(LIBPEERCOIN_SERVER)
 if ENABLE_WALLET
 qt_FastPeercoin_qt_LDADD += $(LIBPEERCOIN_WALLET)
